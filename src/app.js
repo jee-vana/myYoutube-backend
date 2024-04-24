@@ -12,16 +12,15 @@ app.use(
   })
 );
 
-// Middleware to parse JSON requests with a limit of 16kb
 app.use(express.json({ limit: "16kb" }));
-
-// Middleware to parse URL-encoded requests with a limit of 16kb and extended option set to true
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-
-// Serving static files from the "public" directory
 app.use(express.static("public"));
-
-// Middleware to parse cookies
 app.use(cookieParser());
+
+//routes import
+import userRouter from "./routes/user.routes.js";
+
+//routes declaration
+app.use("/api/v1/users", userRouter);
 
 export { app };

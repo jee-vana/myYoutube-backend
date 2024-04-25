@@ -63,11 +63,11 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-mongoose.methods.isPasswordCorrect = async function (password) {
+userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-mongoose.methods.generateAccessToken = function () {
+userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
       _id: this._id,
@@ -80,7 +80,7 @@ mongoose.methods.generateAccessToken = function () {
   );
 };
 
-mongoose.methods.generateRefreshToken = function () {
+userSchema.methods.generateRefreshToken = function () {
   return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN,
   });

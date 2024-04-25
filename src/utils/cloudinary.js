@@ -24,8 +24,8 @@ const uploadOnCloudinary = async (localFilePath) => {
 };
 
 cloudinary.uploader.upload(
-  "https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-  { public_id: "olympic_flag" },
+  "https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg",
+  { public_id: "Indian_flag" },
   function (error, result) {
     console.log(result);
   }
